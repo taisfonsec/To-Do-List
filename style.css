@@ -1,0 +1,186 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+
+
+:root {
+    --fonte-destaque: 'Poiret One', sans-serif;
+    --cor1: #DFB4F0;
+    --cor2: #BE99CC;
+    --cor3: #987AA3;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-image: linear-gradient(to bottom, var(--cor1), var(--cor2), var(--cor3));
+    background-attachment: fixed;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+main {
+    background-color: white;
+    width: 90%;
+    min-width: 300px;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 3px -3px 9px 0px rgba(0, 0, 0, 0.200);
+}
+
+.container-tarefa {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: lightgray;
+    border-radius: 30px;
+    padding-left: 20px;
+}
+
+main > h1 {
+    margin-bottom: 10px;
+    font-family: var(--fonte-destaque);
+    font-size: 3em;
+    margin-top: 0;
+}
+
+#inputTarefa {
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 20px;
+    width: 100%;
+    background-color: transparent;
+    font-size: 18px;
+}
+
+#btnAdicionar {
+    border: none;
+    border-radius: 30px;
+    background-color: var(--cor3);
+    font-size: 18px;
+    padding: 20px 30px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#btnAdicionar:hover {
+    transform: scale(1.05);
+}
+
+#mensagem {
+    text-indent: 20px;
+    color: red;
+    font-weight: bold;
+}
+
+ul {
+    padding-left: 10px;
+    margin-bottom: 0px;
+}
+
+ul li {
+    list-style: none;
+    padding: 10px;
+    padding-left: 25px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+}
+
+/* Estiliza o container do checkbox */
+.checkbox-container {
+    display: flex; /* Organiza os itens em linha */
+    align-items: center; 
+    font-size: 18px; 
+    cursor: pointer;
+    position: relative; /* Necessário para posicionar o checkmark */
+    padding-left: 35px;
+    user-select: none; /* Impede que o usuário selecione o texto */
+}
+
+/* Esconde o input padrão do checkbox */
+.checkbox-container input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute; /* Remove da estrutura normal */
+    opacity: 0; /* Torna invisível */
+    cursor: pointer; /* Mantém a interatividade */
+}
+
+/* Cria o checkmark estilizado */
+.checkmark {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%); /* Centraliza verticalmente */
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 50%; /* Torna o checkmark circular */
+}
+
+/* Exibe um ícone de check quando o checkbox é marcado */
+.checkbox-container input:checked + .checkmark::after {
+    content: '\2714'; /* Ícone de check */
+    position: absolute;
+    color: purple; /* Define a cor do check */
+    font-size: 20px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* Centraliza dentro do checkmark */
+    font-weight: bold; /* Deixa o check mais destacado */
+}
+
+.texto-tarefa {
+    flex-grow: 1; /* Faz o texto ocupar o espaço disponível */
+    white-space: nowrap; /* Impede que o texto quebre em várias linhas */
+    overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse o container */
+    text-overflow: ellipsis; /* Adiciona "..." ao final se o texto for muito longo */
+    max-width: 450px;
+}
+
+/* Altera o estilo do texto da tarefa quando marcada */
+.checkbox-container input:checked + .checkmark + .texto-tarefa {
+    text-decoration: line-through; /* Adiciona um risco no texto */
+    color: gray; /* Muda a cor para indicar que está concluída */
+}
+
+.btnExcluir {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.btnExcluir:hover {
+    transform: scale(1.2);
+}
+
+.btnEditar {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.btnEditar:hover {
+    transform: scale(1.2);
+}
+
+#inputEdicao {
+    opacity: 1;
+    font-size: 18px;
+    width: 90%;
+    padding: 5px;
+    border: 1px solid;
+    border-radius: 5px;
+    cursor: text;
+}
